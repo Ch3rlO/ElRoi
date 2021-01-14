@@ -1,4 +1,4 @@
-// Modules
+// Modules 📦
 const { appendFileSync, readdirSync } = require('fs');
 const { join } = require('path');
 
@@ -36,7 +36,7 @@ const appendIntoFile = (path, data) =>
  *
  */
 
-const readFiles = (...path) => readdirSync(join(...path));
+const readFiles = (...path) => readdirSync(join(...path), 'utf-8');
 
 module.exports = {
   humanFormat2MS,

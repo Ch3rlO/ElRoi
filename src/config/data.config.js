@@ -1,7 +1,7 @@
 exports.websites = [
   {
-    name: 'DUDES Studio',
-    url: 'https://goewdsdsaaaogle.com',
+    name: 'GOOLE',
+    url: 'https://rfeferferferfe.com',
     method: 'get',
   },
 ];

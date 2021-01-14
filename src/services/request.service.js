@@ -1,11 +1,5 @@
-// modules 🗃️
-const fetch = require('https');
-
 // config 🏗️
 const defaultOptions = require('../config/requests.config');
-
-// Services 🧰
-const Logger = require('../services/logger.service');
 
 const Request = {};
 
@@ -22,8 +16,8 @@ const Request = {};
 Request.send = ({ url, method, payload, headers }) =>
   new Promise((resolve, reject) => {
     let response = {};
-    const { hostname, pathname, search } = new URL(url);
-    const req = fetch.request(
+    const { protocol, hostname, pathname, search } = new URL(url);
+    const req = require(protocol.slice(0, -1)).request(
       {
         method,
         hostname,
@@ -35,15 +29,14 @@ Request.send = ({ url, method, payload, headers }) =>
           try {
             // A dump way to check if the request can be parse as json or not 😅!
             data = JSON.parse(data);
-          } catch (err) {}
+          } catch (err) {
+            data = 'HTML RESPONSE';
+          }
           response = {
             payload: data,
             status: res.statusCode,
             isUp: res.statusCode < 300,
-            method,
-            url,
           };
-          Logger.create(response);
         });
         res.on('end', () => {
           resolve(response);
@@ -51,15 +44,11 @@ Request.send = ({ url, method, payload, headers }) =>
       }
     );
     req.on('error', (e) => {
-      response = {
+      reject({
         payload: { message: e.message },
-        status: -3008,
+        status: e.errno,
         isUp: false,
-        method,
-        url,
-      };
-      Logger.create(response);
-      reject(response);
+      });
     });
     if (Object.keys(payload || {})) req.write(JSON.stringify(payload));
     req.end();

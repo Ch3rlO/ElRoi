@@ -21,6 +21,6 @@ Logger.create = (data) => {
 };
 
 Logger.format = ({ method, url, status, isUp }) =>
-  `${method} -- ${url} -- STATUS : ${status} -- IS UP : ${isUp}\n`;
+  `${method.toUpperCase()} -- ${url} -- STATUS : ${status} -- IS UP : ${isUp}\n`;
 
 module.exports = { create: Logger.create };
