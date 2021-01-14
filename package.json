@@ -1,0 +1,36 @@
+{
+  "name": "elroi",
+  "version": "1.0.0",
+  "description": "A Simple NODEJS tool to watch your servers !",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ch3rlO/ElRoi.git"
+  },
+  "keywords": [
+    "monitoring",
+    "servers",
+    "watching",
+    "my",
+    "servers",
+    "eye",
+    "nodejs",
+    "tool"
+  ],
+  "author": "Mustafa (CharlO)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ch3rlO/ElRoi/issues"
+  },
+  "homepage": "https://github.com/Ch3rlO/ElRoi#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
